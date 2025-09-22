@@ -68,7 +68,24 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FRONTEND_REPO: ${{ vars.FRONTEND_REPO }}
 
-      - name: Upload assets
+      - name: Clean illegal characters from matrix.target
+        id: clean_target_name
+        run: |
+          ILLEGAL_CHARS_REGEX='[":<>|*?\\/\r\n]'
+          CLEANED_TARGET=$(echo "${{ matrix.target }}" | sed -E "s/$ILLEGAL_CHARS_REGEX//g")
+          echo "Original target: ${{ matrix.target }}"
+          echo "Cleaned target: $CLEANED_TARGET"
+          echo "cleaned_target=$CLEANED_TARGET" >> $GITHUB_ENV
+
+      - name: Upload assets to github artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: builds for all version openlist
+          path: build/compress/*
+          compression-level: 0
+          if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn`
+
+      - name: Upload assets to github release
         uses: softprops/action-gh-release@v2
         with:
           files: build/compress/*
