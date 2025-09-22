@@ -137,7 +137,36 @@ jobs:
       - name: Upload assets to github artifact
         uses: actions/upload-artifact@v4
         with:
-          name: beta builds for all in one zip
-          path: /build/compress/*
+          name: beta builds for ${{ env.cleaned_target }}
+          path: ${{ github.workspace }}/build/compress/*
           compression-level: 0
-          if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn`
+          if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn'
+
+  zipped_all_in_one:
+    runs-on: ubuntu-latest
+    needs: release
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Download all dispersed artifacts
+      uses: actions/download-artifact@v4
+      with:
+        path: dispersed-artifacts
+        pattern: beta builds for *
+        merge-multiple: true
+    
+    - name: List downloaded artifacts
+      run: ls -la disperesd-artifacts/
+
+    - name: Create disperesd zip package
+      run: |
+        cd dispersed-artifacts
+        zip -r ../all-architectures-openlist-zipped.zip .
+
+    - name: Upload disperesd artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: all-architectures-openlist-zipped
+        path: all-architectures-openlist-zipped.zip
+        retention-days: 7
