@@ -141,6 +141,7 @@ jobs:
           path: ${{ github.workspace }}/build/compress/*
           compression-level: 0
           if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn'
+          retention-days: 7
 
   zipped_all_in_one:
     runs-on: ubuntu-latest
@@ -157,14 +158,14 @@ jobs:
         merge-multiple: true
     
     - name: List downloaded artifacts
-      run: ls -la disperesd-artifacts/
+      run: ls -la dispersed-artifacts/
 
-    - name: Create disperesd zip package
+    - name: Create dispersed zip package
       run: |
         cd dispersed-artifacts
         zip -r ../all-architectures-openlist-zipped.zip .
 
-    - name: Upload disperesd artifact
+    - name: Upload dispersed artifacts
       uses: actions/upload-artifact@v4
       with:
         name: all-architectures-openlist-zipped
