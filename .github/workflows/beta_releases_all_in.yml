@@ -171,3 +171,10 @@ jobs:
         name: all-architectures-openlist-zipped
         path: all-architectures-openlist-zipped.zip
         retention-days: 7
+
+    - name: Upload dispersed artifacts to beta release
+      uses: softprops/action-gh-release@v2
+      with:
+          files: dispersed-artifacts/all-architectures-openlist-zipped.zip
+          prerelease: true
+          tag_name: beta
