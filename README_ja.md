@@ -1,7 +1,7 @@
 <div align="center">
   <img style="width: 128px; height: 128px;" src="https://raw.githubusercontent.com/OpenListTeam/Logo/main/logo.svg" alt="logo" />
 
-  <p><em>OpenList は、信頼ベースの攻撃からオープンソースを守るために構築された、レジリエントで長期ガバナンス、コミュニティ主導の AList フォークです。</em></p>
+  <p><em>OpenList X は AList から分岐したプロジェクトであり、信頼に基づく防御メカニズムを構築することでオープンソースを攻撃から保護することを目的としており、最先端の機能を備えています。</em></p>
 
   <img src="https://goreportcard.com/badge/github.com/OpenListTeam/OpenList/v3" alt="latest version" />
   <a href="https://github.com/OpenListTeam/OpenList/blob/main/LICENSE"><img src="https://img.shields.io/github/license/OpenListTeam/OpenList" alt="License" /></a>

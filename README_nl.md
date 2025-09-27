@@ -1,7 +1,7 @@
 <div align="center">
   <img style="width: 128px; height: 128px;" src="https://raw.githubusercontent.com/OpenListTeam/Logo/main/logo.svg" alt="logo" />
 
-  <p><em>OpenList is een veerkrachtige, langetermijn, door de gemeenschap geleide fork van AList — gebouwd om open source te beschermen tegen op vertrouwen gebaseerde aanvallen.</em></p>
+  <p><em>OpenList X is een tak van AList met geavanceerde functies - bedoeld om open source te beschermen tegen op vertrouwen gebaseerde aanvallen.</em></p>
 
   <img src="https://goreportcard.com/badge/github.com/OpenListTeam/OpenList/v3" alt="latest version" />
   <a href="https://github.com/OpenListTeam/OpenList/blob/main/LICENSE"><img src="https://img.shields.io/github/license/OpenListTeam/OpenList" alt="License" /></a>

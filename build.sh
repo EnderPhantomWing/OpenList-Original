@@ -1,7 +1,7 @@
 set -e
-appName="openlist"
+appName="openlistx"
 builtAt="$(date +'%F %T %z')"
-gitAuthor="The OpenList Projects Contributors <noreply@openlist.team>"
+gitAuthor="The OpenList X Projects Contributors <EnderPhantomWing@outlook.com>"
 gitCommit=$(git log --pretty=format:"%h" -1)
 
 # Set frontend repository, default to OpenListTeam/OpenList-Frontend
