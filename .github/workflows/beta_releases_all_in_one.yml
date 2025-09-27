@@ -141,7 +141,7 @@ jobs:
           path: ${{ github.workspace }}/build/compress/*
           compression-level: 0
           if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn'
-          retention-days: 7
+          retention-days: 2
 
   zipped_all_in_one:
     runs-on: ubuntu-latest
@@ -153,7 +153,7 @@ jobs:
     - name: Download all dispersed artifacts
       uses: actions/download-artifact@v4
       with:
-        path: dispersed-artifacts
+        path: build/compress
         pattern: beta builds for *
         merge-multiple: true
     
@@ -162,19 +162,19 @@ jobs:
 
     - name: Create dispersed zip package
       run: |
-        cd dispersed-artifacts
+        cd build/compress
         zip -r ../all-architectures-openlist-zipped.zip .
 
-    - name: Upload dispersed artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: all-architectures-openlist-zipped
-        path: all-architectures-openlist-zipped.zip
-        retention-days: 7
+#    - name: Upload dispersed artifacts
+#      uses: actions/upload-artifact@v4
+#      with:
+#        name: all-architectures-openlist-zipped
+#        path: all-architectures-openlist-zipped.zip
+#        retention-days: 7
 
     - name: Upload dispersed artifacts to beta release
       uses: softprops/action-gh-release@v2
       with:
-          files: dispersed-artifacts/all-architectures-openlist-zipped.zip
+          files: build/compress/* # && dispersed-artifacts/all-architectures-openlist-zipped.zip
           prerelease: true
           tag_name: beta
